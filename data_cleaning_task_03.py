@@ -47,6 +47,10 @@ def clean_data(input_file, output_file):
                 df[col].fillna(mode_value, inplace=True)
                 print(f"Filled missing values in categorical column '{col}' with mode: {mode_value}")
 
+        # to fetch only file name of csv from the given path
+        output_file = str(output_file).split("\\")
+        output_file = output_file[-1]
+        
         # Save the cleaned data to a new CSV file
         df.to_csv(output_file, index=False)
         print(f"Cleaned data saved to {output_file}")
@@ -56,6 +60,6 @@ def clean_data(input_file, output_file):
 
 if __name__ == "__main__":
     # Example usage:
-    input_csv = r"C:\Users\Shahid khan\OneDrive\Desktop\CodeAlpha Tasks of Python Internship\Input_Data.csv"   # Replace with your input file path
-    output_csv = r"C:\Users\Shahid khan\OneDrive\Desktop\CodeAlpha Tasks of Python Internship\Cleaned Data.csv"  # Replace with your desired output file path
+    input_csv = r"raw_data.csv"   # Replace with your input file path
+    output_csv = r"cleaned_data.csv"  # Replace with your desired output file path
     clean_data(input_csv, output_csv)
